@@ -125,7 +125,7 @@ const keepLives = () => {
     ghost.y = 10;
 };
 
-document.onkeydown = function(e) {
+const moveNinja = (e) => {
     if (e.keyCode == 37) {if (world[ninja.y][ninja.x - 1] != 0) {
         ninja.x--;}
     }
@@ -138,7 +138,9 @@ document.onkeydown = function(e) {
     if (e.keyCode == 40) {if (world[ninja.y + 1][ninja.x] != 0) {
         ninja.y++;}
     }
+};
 
+const moveGhost = () => {
     ghost.x = result[0].y;
     ghost.y = result[0].x;
 
@@ -155,6 +157,11 @@ document.onkeydown = function(e) {
             location.reload();
         }
     }
+};
+
+document.onkeydown = function(e) {
+    moveNinja(e);
+    moveGhost();
 
     drawNinja();
     drawGhost();
